@@ -1,5 +1,5 @@
 # env files contain secrets
 *.env
 
-# service-specific config files
+# caddy config file
 Caddyfile

@@ -7,6 +7,7 @@ Podman quadlets.
 
 | Service | Description |
 |---|---|
+| [caddy](caddy/) | Web server and reverse proxy with automatic HTTPS |
 
 ## Setup
 

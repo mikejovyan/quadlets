@@ -1,0 +1,24 @@
+[Unit]
+Description=Web server and reverse proxy with automatic HTTPS
+Documentation=https://github.com/serfriz/caddy-custom-builds
+
+[Container]
+AutoUpdate=registry
+ContainerName=caddy
+EnvironmentFile=caddy.env
+Image=ghcr.io/serfriz/caddy-cloudflare-ddns:latest
+LogDriver=journald
+Network=host
+Timezone=local
+Volume=./Caddyfile:/etc/caddy/Caddyfile:ro,Z
+Volume=caddy-data:/data:Z
+Volume=caddy-config:/config:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+[Quadlet]
+DefaultDependencies=false
