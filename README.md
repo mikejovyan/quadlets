@@ -8,6 +8,7 @@ Podman quadlets.
 | Service | Description |
 |---|---|
 | [caddy](caddy/) | Web server and reverse proxy with automatic HTTPS |
+| [ntfy](ntfy/) | Send push notifications to your phone or desktop via PUT/POST |
 
 ## Setup
 
