@@ -23,7 +23,8 @@ mkdir ~/.config/containers/systemd/
 2. Clone the repository and navigate to it
 
 ```shell
-git clone https://forgejo.michael-andrea.com/mikejovyan/quadlets.git && cd quadlets
+REPO=https://<your-git-server>/mikejovyan/quadlets.git
+git clone $REPO && cd quadlets
 ```
 
 3. Copy the `<service>` folder to the systemd container directory.
