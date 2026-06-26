@@ -1,0 +1,34 @@
+log:
+  level: info
+  job_level: info
+
+runner:
+  capacity: 1
+  envs: {}
+  timeout: 3h
+  shutdown_timeout: 3h
+  insecure: false
+  fetch_timeout: 30s
+  fetch_interval: 2s
+  report_interval: 1s
+  labels:
+    - ubuntu-latest:docker://node:20-bookworm
+
+cache:
+  enabled: true
+
+container:
+  network: ""
+  privileged: false
+  docker_host: "-"
+  force_pull: false
+
+host:
+  workdir_parent:
+
+server:
+  connections:
+    forgejo:
+      url: https://<your-forgejo-domain>/
+      uuid: <generated on first registration>
+      token_url: file:///data/runner-token

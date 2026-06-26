@@ -1,0 +1,22 @@
+[Unit]
+Description=PostgreSQL database for Forgejo
+Documentation=https://www.postgresql.org/
+
+[Container]
+AutoUpdate=registry
+ContainerName=forgejo-postgres
+EnvironmentFile=forgejo-postgres.env
+Image=docker.io/postgres:latest
+LogDriver=journald
+Network=forgejo.network
+Timezone=local
+Volume=forgejo-postgres-data:/var/lib/postgresql:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+[Quadlet]
+DefaultDependencies=false

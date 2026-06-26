@@ -3,3 +3,6 @@
 
 # caddy config file
 Caddyfile
+
+# forgejo-runner config file
+config.yml
