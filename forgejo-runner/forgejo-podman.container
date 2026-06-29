@@ -4,12 +4,14 @@ Documentation=https://docs.podman.io/en/latest/markdown/podman-system-service.1.
 
 [Container]
 AddDevice=/dev/fuse
+AddDevice=/dev/net/tun
 AutoUpdate=registry
 ContainerName=forgejo-podman
 Exec=podman system service --time=0 tcp://0.0.0.0:2375
 Image=quay.io/podman/stable:latest
 LogDriver=journald
 Network=forgejo-runner.network
+PublishPort=127.0.0.1:2375:2375
 SecurityLabelDisable=true
 Timezone=local
 User=podman
