@@ -200,6 +200,14 @@ container:
   # Whether to use privileged mode or not when launching task containers (privileged mode is required for Docker-in-Docker).
   privileged: false
   # And other options to be used when the container is started (e.g., --volume /etc/ssl/certs:/etc/ssl/certs:ro).
+  #
+  # If your Forgejo's container registry redirects auth to a public ROOT_URL that job
+  # containers can't otherwise reach, add a host entry pointing it at 169.254.1.2 (Podman/pasta's
+  # fixed address for reaching the host from this nested engine, the same one
+  # host.containers.internal resolves to). This is needed because rootless Podman/pasta only
+  # special-cases its own gateway address for hairpin back to the host, not the host's other
+  # real addresses:
+  #   options: --add-host <your-root-url-domain>:169.254.1.2
   options:
   # The parent directory of a job's working directory.
   # If it's empty, /workspace will be used.

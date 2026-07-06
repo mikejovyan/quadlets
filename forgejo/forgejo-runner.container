@@ -12,7 +12,6 @@ Exec=forgejo-runner --config /data/config.yml daemon
 Image=code.forgejo.org/forgejo/runner:12
 LogDriver=journald
 Network=forgejo-runner.network
-Network=forgejo.network
 Timezone=local
 User=%U:%G
 UserNS=keep-id:uid=%U,gid=%G
