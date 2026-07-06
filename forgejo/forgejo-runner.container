@@ -1,0 +1,29 @@
+[Unit]
+Description=CI/CD runner for Forgejo
+Documentation=https://forgejo.org/docs/latest/admin/actions/
+After=forgejo-runner-podman.service forgejo.service
+BindsTo=forgejo-runner-podman.service
+
+[Container]
+AutoUpdate=registry
+ContainerName=forgejo-runner
+Environment=DOCKER_HOST=tcp://forgejo-runner-podman:2375
+Exec=forgejo-runner --config /data/config.yml daemon
+Image=code.forgejo.org/forgejo/runner:12
+LogDriver=journald
+Network=forgejo-runner.network
+Network=forgejo.network
+Timezone=local
+User=%U:%G
+UserNS=keep-id:uid=%U,gid=%G
+Volume=forgejo-runner-data:/data:Z
+Volume=./forgejo-runner-config.yml:/data/config.yml:ro,Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+[Quadlet]
+DefaultDependencies=false
