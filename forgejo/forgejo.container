@@ -1,0 +1,26 @@
+[Unit]
+Description=Self-hosted git forge
+Documentation=https://forgejo.org/
+After=forgejo-postgres.service
+
+[Container]
+AutoUpdate=registry
+ContainerName=forgejo
+EnvironmentFile=forgejo.env
+Image=code.forgejo.org/forgejo/forgejo:15-rootless
+LogDriver=journald
+Network=forgejo.network
+PublishPort=3000:3000
+PublishPort=2222:2222
+Timezone=local
+Volume=forgejo-data:/var/lib/gitea:Z
+Volume=forgejo-config:/etc/gitea:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+[Quadlet]
+DefaultDependencies=false
