@@ -8,7 +8,8 @@ Podman quadlets.
 | Service | Description |
 |---|---|
 | [caddy](caddy/) | Web server and reverse proxy with automatic HTTPS |
-| [forgejo](forgejo/) | Self-hosted git forge, including its CI/CD runner |
+| [forgejo](forgejo/) | Self-hosted git forge |
+| [forgejo-runner](forgejo-runner/) | CI/CD runner for Forgejo Actions |
 | [ntfy](ntfy/) | Send push notifications to your phone or desktop via PUT/POST |
 
 ## Setup
