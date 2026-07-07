@@ -36,7 +36,7 @@ cp -r <service>/ ~/.config/containers/systemd/
 4. Create configuration files from `.example` files and edit as needed.
 
 ```shell
-for f in ~/.config/containers/systemd/<service>/*.example; do
+find ~/.config/containers/systemd/<service> -name "*.example" | while read -r f; do
   cp "$f" "${f%.example}"
 done
 ```
