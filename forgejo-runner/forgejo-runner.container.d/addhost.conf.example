@@ -1,0 +1,3 @@
+[Container]
+# Forgejo Runner reaches forgejo.example.com via the pasta host-forwarding address (host-gateway), since its container registry auth always redirects to the public URL.
+AddHost=forgejo.example.com:host-gateway

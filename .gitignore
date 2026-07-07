@@ -1,5 +1,6 @@
-# env files contain secrets
+# files that contain secrets
 *.env
+*.conf
 
 # caddy config file
 Caddyfile

@@ -1,0 +1,3 @@
+[Container]
+# Forgejo reaches ntfy.example.com via the pasta host-forwarding address (host-gateway), landing on Caddy's published port and proxied internally to ntfy, for webhook delivery.
+AddHost=ntfy.example.com:host-gateway
