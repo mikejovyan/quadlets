@@ -73,6 +73,27 @@ podman auto-update
 loginctl enable-linger $USER
 ```
 
+* Allow rootless containers (e.g. caddy) to bind privileged ports below 1024, then apply with `sudo sysctl --system`
+
+```shell
+cat << EOF | sudo tee /etc/sysctl.d/99-podman-rootless.conf
+net.ipv4.ip_unprivileged_port_start=80
+EOF
+```
+
+* Allow Cockpit to work behind a reverse proxy, then apply with `sudo systemctl restart cockpit.service`
+
+> [!WARNING]
+> Don't expose to the LAN.
+
+```shell
+cat << EOF | sudo tee /etc/cockpit/cockpit.conf
+[WebService]
+AllowUnencrypted = true
+ProtocolHeader = X-Forwarded-Proto
+EOF
+```
+
 ## References
 
 - [https://github.com/herzenschein/herz-quadlet](https://github.com/herzenschein/herz-quadlet)
