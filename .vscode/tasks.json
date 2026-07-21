@@ -2,9 +2,15 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "sync from pi",
+            "label": "sync from ssh",
             "type": "shell",
             "command": "set -a; source ${workspaceFolder}/.vscode/quadlets.env; ssh $SSH_USER@$SSH_HOST 'tar -C .config/containers/systemd -cf - .' | tar -C ${workspaceFolder} -xf -",
+            "problemMatcher": []
+        },
+        {
+            "label": "sync to ssh",
+            "type": "shell",
+            "command": "set -a; source ${workspaceFolder}/.vscode/quadlets.env; tar --exclude='.git' -C ${workspaceFolder} -cf - . | ssh $SSH_USER@$SSH_HOST 'tar -C .config/containers/systemd -xf -'",
             "problemMatcher": []
         }
     ]
