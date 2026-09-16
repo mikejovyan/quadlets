@@ -15,6 +15,7 @@ PublishPort=2222:2222
 Timezone=local
 Volume=forgejo-data:/var/lib/gitea:Z
 Volume=forgejo-config:/etc/gitea:Z
+Volume=./default_merge_message:/var/lib/gitea/custom/default_merge_message:ro,Z
 
 [Service]
 Restart=always
