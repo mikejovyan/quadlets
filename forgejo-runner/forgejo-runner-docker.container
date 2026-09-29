@@ -5,7 +5,7 @@ Documentation=https://hub.docker.com/_/docker
 [Container]
 AutoUpdate=registry
 ContainerName=forgejo-runner-docker
-EnvironmentFile=forgejo-runner-docker.env
+Environment=DOCKER_TLS_CERTDIR=
 HealthCmd=docker -H tcp://localhost:2375 info
 HealthInterval=5s
 HealthStartupInterval=2s
