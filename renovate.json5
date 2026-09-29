@@ -8,5 +8,10 @@
       description: "Open PRs directly for major updates in this repo, instead of waiting on Dependency Dashboard approval",
       matchUpdateTypes: [ "major" ],
     },
+    {
+      description: "Don't pin image digests - these tags are meant to track upstream releases, not a single fixed digest",
+      matchDatasources: [ "docker" ],
+      pinDigests: false,
+    },
   ],
 }
