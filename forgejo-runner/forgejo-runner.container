@@ -1,13 +1,13 @@
 [Unit]
 Description=CI/CD runner for Forgejo
 Documentation=https://forgejo.org/docs/latest/admin/actions/
-After=forgejo-runner-podman.service forgejo.service
-BindsTo=forgejo-runner-podman.service
+After=forgejo-runner-docker.service forgejo.service
+BindsTo=forgejo-runner-docker.service
 
 [Container]
 AutoUpdate=registry
 ContainerName=forgejo-runner
-Environment=DOCKER_HOST=tcp://forgejo-runner-podman:2375
+Environment=DOCKER_HOST=tcp://forgejo-runner-docker:2375
 Exec=forgejo-runner --config /data/config.yml daemon
 Image=code.forgejo.org/forgejo/runner:12
 LogDriver=journald
