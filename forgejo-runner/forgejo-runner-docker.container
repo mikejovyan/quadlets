@@ -1,0 +1,28 @@
+[Unit]
+Description=Docker daemon (dind) for Forgejo runner jobs
+Documentation=https://hub.docker.com/_/docker
+
+[Container]
+AutoUpdate=registry
+ContainerName=forgejo-runner-docker
+EnvironmentFile=forgejo-runner-docker.env
+HealthCmd=docker -H tcp://localhost:2375 info
+HealthInterval=5s
+HealthStartupInterval=2s
+Image=forgejo-runner-dind:latest
+LogDriver=journald
+Network=forgejo-runner.network
+Notify=healthy
+# Privileged inside the rootless user namespace only; needed for dockerd and the binfmt registration
+PodmanArgs=--privileged
+Timezone=local
+Volume=forgejo-runner-docker-data:/var/lib/docker
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+[Quadlet]
+DefaultDependencies=false
