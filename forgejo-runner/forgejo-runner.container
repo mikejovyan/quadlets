@@ -9,7 +9,7 @@ AutoUpdate=registry
 ContainerName=forgejo-runner
 Environment=DOCKER_HOST=tcp://forgejo-runner-docker:2375
 Exec=forgejo-runner --config /data/config.yml daemon
-Image=code.forgejo.org/forgejo/runner:12
+Image=code.forgejo.org/forgejo/runner:13
 LogDriver=journald
 Network=forgejo-runner.network
 Timezone=local
