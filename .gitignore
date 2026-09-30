@@ -4,6 +4,3 @@
 
 # caddy config file
 Caddyfile
-
-# forgejo-runner config file
-forgejo-runner-config.yml
