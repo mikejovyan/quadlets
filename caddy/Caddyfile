@@ -1,0 +1,32 @@
+(secure) {
+	header {
+		Strict-Transport-Security max-age=31536000;
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+	encode zstd gzip
+}
+
+{
+	log {
+		level WARN
+		format console
+	}
+	acme_dns cloudflare {$CLOUDFLARE_API_TOKEN}
+	# 	dynamic_dns {
+	# 		provider cloudflare {$CLOUDFLARE_API_TOKEN}
+	# 		domains {
+	# 			{$MY_DOMAIN} forgejo ntfy
+	# 		}
+	# 	}
+}
+
+forgejo.{$MY_DOMAIN} {
+	import secure
+	reverse_proxy forgejo:3000
+}
+
+ntfy.{$MY_DOMAIN} {
+	import secure
+	reverse_proxy ntfy:8080
+}
