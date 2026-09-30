@@ -16,6 +16,7 @@ Notify=healthy
 # Privileged inside the rootless user namespace only; needed for dockerd and the binfmt registration
 PodmanArgs=--privileged
 Timezone=local
+Volume=./daemon.json:/etc/docker/daemon.json:ro
 Volume=forgejo-runner-docker-data:/var/lib/docker
 
 [Service]
