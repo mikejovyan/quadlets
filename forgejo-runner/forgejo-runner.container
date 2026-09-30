@@ -8,7 +8,8 @@ BindsTo=forgejo-runner-docker.service
 AutoUpdate=registry
 ContainerName=forgejo-runner
 Environment=DOCKER_HOST=tcp://forgejo-runner-docker:2375
-Exec=forgejo-runner --config /data/config.yml daemon
+EnvironmentFile=forgejo-runner.env
+Exec=sh /data/entrypoint.sh
 Image=code.forgejo.org/forgejo/runner:13
 LogDriver=journald
 Network=forgejo-runner.network
@@ -16,7 +17,8 @@ Timezone=local
 User=%U:%G
 UserNS=keep-id:uid=%U,gid=%G
 Volume=forgejo-runner-data:/data:Z
-Volume=./forgejo-runner-config.yml:/data/config.yml:ro,Z
+Volume=./forgejo-runner-config.yml:/data/config-template.yml:ro,Z
+Volume=./forgejo-runner-entrypoint.sh:/data/entrypoint.sh:ro,Z
 
 [Service]
 Restart=always
