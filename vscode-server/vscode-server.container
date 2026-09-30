@@ -1,0 +1,23 @@
+[Unit]
+Description=Run VS Code on any machine anywhere and access it in the browser
+Documentation=https://code.visualstudio.com/docs/remote/vscode-server
+
+[Container]
+AutoUpdate=registry
+ContainerName=vscode-server
+EnvironmentFile=vscode-server.env
+Image=vscode-server:latest
+LogDriver=journald
+Network=vscode-server.network
+PublishPort=127.0.0.1:8000:8000
+Secret=kaggle_api_token,type=mount
+Timezone=local
+UserNS=keep-id
+Volume=%h/Projects:/home/coder/Projects:rw
+Volume=%h/.ssh:/home/coder/.ssh:ro,Z
+Volume=vscode-server-config:/home/coder/.config:Z
+Volume=vscode-server-data:/home/coder/.vscode:Z
+Volume=vscode-server-start:/home/coder/.app-start:Z,U
+
+[Service]
+Restart=no
