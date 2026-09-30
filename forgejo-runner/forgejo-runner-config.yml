@@ -29,10 +29,3 @@ container:
 
 host:
   workdir_parent:
-
-server:
-  connections:
-    forgejo:
-      url: __FORGEJO_URL__
-      uuid: __FORGEJO_UUID__
-      token: __FORGEJO_TOKEN__
