@@ -9,8 +9,9 @@ Podman quadlets.
 |---|---|
 | [caddy](caddy/) | Web server and reverse proxy with automatic HTTPS |
 | [forgejo](forgejo/) | Self-hosted git forge |
-| [forgejo-runner](forgejo-runner/) | CI/CD runner for Forgejo Actions, backed by a docker-in-podman (dind) daemon for BuildKit support. QEMU for cross-arch job containers is registered by the dind image's entrypoint on every start, since `binfmt_misc` is namespaced |
+| [forgejo-runner](forgejo-runner/) | CI/CD runner for Forgejo Actions, backed by a docker-in-podman (dind) daemon for BuildKit support |
 | [ntfy](ntfy/) | Send push notifications to your phone or desktop via PUT/POST |
+| [vscode-server](vscode-server/) | Run VS Code on any machine anywhere and access it in the browser |
 
 ## Setup
 
