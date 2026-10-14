@@ -9,7 +9,8 @@ Podman quadlets.
 |---|---|
 | [caddy](caddy/) | Web server and reverse proxy with automatic HTTPS |
 | [forgejo](forgejo/) | Self-hosted git forge |
-| [forgejo-runner](forgejo-runner/) | CI/CD runner for Forgejo Actions, backed by a docker-in-podman (dind) daemon for BuildKit support |
+| [forgejo-ntfy-bridge](forgejo-ntfy-bridge/) | Forward Forgejo webhooks to ntfy notifications |
+| [forgejo-runner](forgejo-runner/) | CI/CD runner for Forgejo Actions |
 | [ntfy](ntfy/) | Send push notifications to your phone or desktop via PUT/POST |
 | [vscode-server](vscode-server/) | Run VS Code on any machine anywhere and access it in the browser |
 
