@@ -1,0 +1,23 @@
+[Unit]
+Description=Forward Forgejo webhooks to ntfy notifications
+After=ntfy.service forgejo.service
+
+[Container]
+AutoUpdate=registry
+ContainerName=forgejo-ntfy-bridge
+EnvironmentFile=forgejo-ntfy-bridge.env
+Image=forgejo-ntfy-bridge:latest
+LogDriver=journald
+Network=forgejo-ntfy-bridge.network
+Network=forgejo.network
+Network=ntfy.network
+Timezone=local
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+[Quadlet]
+DefaultDependencies=false
