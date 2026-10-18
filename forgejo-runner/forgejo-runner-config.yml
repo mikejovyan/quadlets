@@ -6,7 +6,6 @@ runner:
   capacity: 1
   envs:
     DOCKER_BUILDKIT: "1"
-    DOCKER_HOST: "tcp://127.0.0.1:2375"
   timeout: 3h
   shutdown_timeout: 3h
   insecure: false
@@ -24,7 +23,7 @@ container:
     - renovate-cache
   network: "host"
   privileged: false
-  docker_host: "tcp://forgejo-runner-docker:2375"
+  docker_host: "unix:///var/run/docker-shared/docker.sock"
   force_pull: false
 
 host:
