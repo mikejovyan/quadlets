@@ -1,4 +1,8 @@
 {
+  "hosts": [
+    "unix:///var/run/docker.sock",
+    "unix:///var/run/docker-shared/docker.sock"
+  ],
   "log-driver": "local",
   "builder": {
     "gc": {
