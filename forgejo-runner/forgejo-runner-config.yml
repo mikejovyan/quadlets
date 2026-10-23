@@ -19,7 +19,7 @@ cache:
 container:
   valid_volumes:
     - renovate-cache
-  network: "host"
+  network: ""
   privileged: false
   docker_host: "unix:///var/run/docker-shared/docker.sock"
   force_pull: true
