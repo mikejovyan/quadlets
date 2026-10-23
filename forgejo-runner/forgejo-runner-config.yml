@@ -4,8 +4,6 @@ log:
 
 runner:
   capacity: 1
-  envs:
-    DOCKER_BUILDKIT: "1"
   timeout: 3h
   shutdown_timeout: 3h
   insecure: false
@@ -21,10 +19,10 @@ cache:
 container:
   valid_volumes:
     - renovate-cache
-  network: "host"
+  network: ""
   privileged: false
   docker_host: "unix:///var/run/docker-shared/docker.sock"
-  force_pull: false
+  force_pull: true
 
 host:
   workdir_parent:
