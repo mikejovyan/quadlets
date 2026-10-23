@@ -4,8 +4,6 @@ log:
 
 runner:
   capacity: 1
-  envs:
-    DOCKER_BUILDKIT: "1"
   timeout: 3h
   shutdown_timeout: 3h
   insecure: false
