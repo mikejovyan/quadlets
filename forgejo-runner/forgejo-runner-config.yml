@@ -22,7 +22,7 @@ container:
   network: "host"
   privileged: false
   docker_host: "unix:///var/run/docker-shared/docker.sock"
-  force_pull: false
+  force_pull: true
 
 host:
   workdir_parent:
