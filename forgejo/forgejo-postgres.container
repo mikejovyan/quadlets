@@ -13,6 +13,12 @@ Image=docker.io/postgres:18
 LogDriver=journald
 Pod=forgejo.pod
 Timezone=local
+
+HealthCmd=pg_isready -U forgejo -d forgejo
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+
 Volume=forgejo-postgres-data.volume:/var/lib/postgresql:Z
 
 [Service]

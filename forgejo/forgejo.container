@@ -12,6 +12,12 @@ Image=code.forgejo.org/forgejo/forgejo:15-rootless
 LogDriver=journald
 Pod=forgejo.pod
 Timezone=local
+
+HealthCmd=curl -fsS -m 5 -o /dev/null http://127.0.0.1:3000/api/healthz
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+
 Volume=forgejo-data.volume:/var/lib/gitea:Z
 Volume=forgejo-config.volume:/etc/gitea:Z
 Volume=./default_merge_message:/var/lib/gitea/custom/default_merge_message:ro,Z

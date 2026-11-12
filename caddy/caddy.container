@@ -15,6 +15,12 @@ PublishPort=80:80
 PublishPort=443:443
 PublishPort=443:443/udp
 Timezone=local
+
+HealthCmd=curl -fsS -m 5 -o /dev/null http://127.0.0.1:2019/config/
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+
 Volume=./Caddyfile:/etc/caddy/Caddyfile:ro,Z
 Volume=caddy-data.volume:/data:Z
 Volume=caddy-config.volume:/config:Z

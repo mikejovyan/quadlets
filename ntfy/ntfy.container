@@ -13,6 +13,13 @@ LogDriver=journald
 Network=ntfy.network
 RunInit=true
 Timezone=local
+
+HealthCmd=wget -q --tries=1 http://127.0.0.1:8080/v1/health -O - | grep -Eo '"healthy"[[:space:]]*:[[:space:]]*true' || exit 1
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+HealthTimeout=10s
+
 Volume=ntfy-cache.volume:/var/cache/ntfy
 Volume=ntfy-config.volume:/etc/ntfy
 Volume=ntfy-lib.volume:/var/lib/ntfy
