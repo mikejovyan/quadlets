@@ -8,7 +8,7 @@ Requires=forgejo-pod.service
 AutoUpdate=registry
 ContainerName=forgejo-postgres
 EnvironmentFile=forgejo-postgres.env
-Exec=postgres -c log_checkpoints=off
+Exec=postgres -c log_checkpoints=off -c log_line_prefix='[%%p] '
 Image=docker.io/postgres:18
 LogDriver=journald
 Pod=forgejo.pod

@@ -8,11 +8,12 @@ ContainerName=vscode-server
 EnvironmentFile=vscode-server.env
 Image=vscode-server:latest
 LogDriver=journald
-Network=vscode-server.network
-PublishPort=127.0.0.1:8000:8000
-Secret=kaggle_api_token,type=mount
 Timezone=local
 UserNS=keep-id
+
+Network=vscode-server.network
+PublishPort=127.0.0.1:8000:8000
+
 Volume=%h/Projects:/home/coder/Projects:rw
 Volume=%h/.ssh:/home/coder/.ssh:ro,Z
 Volume=vscode-server-config.volume:/home/coder/.config:Z
