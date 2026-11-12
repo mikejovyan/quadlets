@@ -1,29 +1,34 @@
 [Unit]
-Description=Web server and reverse proxy with automatic HTTPS
-Documentation=https://github.com/serfriz/caddy-custom-builds
+Description=Caddy container
+After=network-online.target
 
 [Container]
 AutoUpdate=registry
 ContainerName=caddy
 EnvironmentFile=caddy.env
 Image=ghcr.io/serfriz/caddy-cloudflare-ddns:latest
+Label=app=caddy
 LogDriver=journald
+Timezone=local
+
+HealthCmd=curl -fsS -m 5 -o /dev/null http://127.0.0.1:2019/config/
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+
 Network=caddy.network
-Network=ntfy.network
 Network=forgejo.network
 PublishPort=80:80
 PublishPort=443:443
 PublishPort=443:443/udp
-Timezone=local
+
 Volume=./Caddyfile:/etc/caddy/Caddyfile:ro,Z
-Volume=caddy-data:/data:Z
-Volume=caddy-config:/config:Z
+Volume=caddy-data.volume:/data:Z
+Volume=caddy-config.volume:/config:Z
 
 [Service]
 Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
-
-[Quadlet]
-DefaultDependencies=false

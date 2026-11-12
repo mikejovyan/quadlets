@@ -1,27 +1,32 @@
 [Unit]
-Description=Send push notifications to your phone or desktop via PUT/POST
-Documentation=https://docs.ntfy.sh/
-After=caddy.service
+Description=Ntfy container
+After=network-online.target
 
 [Container]
 AutoUpdate=registry
 ContainerName=ntfy
-EnvironmentFile=ntfy.env
 Exec=serve
 Image=docker.io/binwiederhier/ntfy:latest
+Label=app=ntfy
 LogDriver=journald
-Network=ntfy.network
 RunInit=true
 Timezone=local
-Volume=ntfy-cache:/var/cache/ntfy
-Volume=ntfy-config:/etc/ntfy
-Volume=ntfy-lib:/var/lib/ntfy
+
+HealthCmd=wget -q --tries=1 http://127.0.0.1:8080/v1/health -O - | grep -Eo '"healthy"[[:space:]]*:[[:space:]]*true' || exit 1
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+HealthTimeout=10s
+
+Network=ntfy.network
+
+Volume=./server.yml:/etc/ntfy/server.yml:ro,Z
+Volume=ntfy-cache.volume:/var/cache/ntfy
+Volume=ntfy-lib.volume:/var/lib/ntfy
 
 [Service]
 Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
-
-[Quadlet]
-DefaultDependencies=false

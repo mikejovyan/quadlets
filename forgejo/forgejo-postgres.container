@@ -1,23 +1,30 @@
 [Unit]
-Description=PostgreSQL database for Forgejo
-Documentation=https://www.postgresql.org/
+Description=Forgejo PostgreSQL container
+After=forgejo-pod.service
+Requires=forgejo-pod.service
 
 [Container]
 AutoUpdate=registry
 ContainerName=forgejo-postgres
 EnvironmentFile=forgejo-postgres.env
-Exec=postgres -c log_checkpoints=off
+Exec=postgres -c log_checkpoints=off -c log_line_prefix='[%%p] '
 Image=docker.io/postgres:18
 LogDriver=journald
-Network=forgejo.network
+Pod=forgejo.pod
 Timezone=local
-Volume=forgejo-postgres-data:/var/lib/postgresql:Z
+
+HealthCmd=pg_isready -U forgejo -d forgejo
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+
+Volume=forgejo-postgres-data.volume:/var/lib/postgresql:Z
 
 [Service]
 Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
-
-[Quadlet]
-DefaultDependencies=false
+WantedBy=forgejo-pod.service
+WantedBy=forgejo.service

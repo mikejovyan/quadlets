@@ -1,0 +1,15 @@
+[Unit]
+Description=Forgejo pod
+After=network-online.target
+
+[Pod]
+Label=app=forgejo
+Network=forgejo.network
+PodName=forgejo-pod
+PublishPort=2222:2222
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

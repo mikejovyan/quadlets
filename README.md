@@ -9,7 +9,6 @@ Podman quadlets.
 |---|---|
 | [caddy](caddy/) | Web server and reverse proxy with automatic HTTPS |
 | [forgejo](forgejo/) | Self-hosted git forge |
-| [forgejo-ntfy-bridge](forgejo-ntfy-bridge/) | Forward Forgejo webhooks to ntfy notifications |
 | [forgejo-runner](forgejo-runner/) | CI/CD runner for Forgejo Actions |
 | [ntfy](ntfy/) | Send push notifications to your phone or desktop via PUT/POST |
 | [vscode-server](vscode-server/) | Run VS Code on any machine anywhere and access it in the browser |
@@ -80,19 +79,6 @@ loginctl enable-linger $USER
 ```shell
 cat << EOF | sudo tee /etc/sysctl.d/99-podman-rootless.conf
 net.ipv4.ip_unprivileged_port_start=80
-EOF
-```
-
-* Allow Cockpit to work behind a reverse proxy, then apply with `sudo systemctl restart cockpit.service`
-
-> [!WARNING]
-> Don't expose to the LAN.
-
-```shell
-cat << EOF | sudo tee /etc/cockpit/cockpit.conf
-[WebService]
-AllowUnencrypted = true
-ProtocolHeader = X-Forwarded-Proto
 EOF
 ```
 
