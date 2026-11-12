@@ -11,7 +11,7 @@ Image=docker.io/postgres:18
 LogDriver=journald
 Network=forgejo.network
 Timezone=local
-Volume=forgejo-postgres-data:/var/lib/postgresql:Z
+Volume=forgejo-postgres-data.volume:/var/lib/postgresql:Z
 
 [Service]
 Restart=always

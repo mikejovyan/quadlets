@@ -16,8 +16,8 @@ PublishPort=443:443
 PublishPort=443:443/udp
 Timezone=local
 Volume=./Caddyfile:/etc/caddy/Caddyfile:ro,Z
-Volume=caddy-data:/data:Z
-Volume=caddy-config:/config:Z
+Volume=caddy-data.volume:/data:Z
+Volume=caddy-config.volume:/config:Z
 
 [Service]
 Restart=always

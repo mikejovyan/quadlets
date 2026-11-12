@@ -15,9 +15,9 @@ Timezone=local
 UserNS=keep-id
 Volume=%h/Projects:/home/coder/Projects:rw
 Volume=%h/.ssh:/home/coder/.ssh:ro,Z
-Volume=vscode-server-config:/home/coder/.config:Z
-Volume=vscode-server-data:/home/coder/.vscode:Z
-Volume=vscode-server-start:/home/coder/.app-start:Z,U
+Volume=vscode-server-config.volume:/home/coder/.config:Z
+Volume=vscode-server-data.volume:/home/coder/.vscode:Z
+Volume=vscode-server-start.volume:/home/coder/.app-start:Z,U
 
 [Service]
 Restart=no

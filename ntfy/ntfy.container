@@ -13,9 +13,9 @@ LogDriver=journald
 Network=ntfy.network
 RunInit=true
 Timezone=local
-Volume=ntfy-cache:/var/cache/ntfy
-Volume=ntfy-config:/etc/ntfy
-Volume=ntfy-lib:/var/lib/ntfy
+Volume=ntfy-cache.volume:/var/cache/ntfy
+Volume=ntfy-config.volume:/etc/ntfy
+Volume=ntfy-lib.volume:/var/lib/ntfy
 
 [Service]
 Restart=always
