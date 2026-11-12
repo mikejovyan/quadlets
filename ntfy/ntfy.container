@@ -1,16 +1,13 @@
 [Unit]
 Description=Send push notifications to your phone or desktop via PUT/POST
 Documentation=https://docs.ntfy.sh/
-After=caddy.service
 
 [Container]
 AutoUpdate=registry
 ContainerName=ntfy
-EnvironmentFile=ntfy.env
 Exec=serve
 Image=docker.io/binwiederhier/ntfy:latest
 LogDriver=journald
-Network=ntfy.network
 RunInit=true
 Timezone=local
 
@@ -20,8 +17,10 @@ HealthRetries=5
 HealthStartPeriod=30s
 HealthTimeout=10s
 
+Network=ntfy.network
+
+Volume=./server.yml:/etc/ntfy/server.yml:ro,Z
 Volume=ntfy-cache.volume:/var/cache/ntfy
-Volume=ntfy-config.volume:/etc/ntfy
 Volume=ntfy-lib.volume:/var/lib/ntfy
 
 [Service]
