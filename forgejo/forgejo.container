@@ -18,10 +18,8 @@ Volume=./default_merge_message:/var/lib/gitea/custom/default_merge_message:ro,Z
 
 [Service]
 Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
 WantedBy=forgejo-pod.service
-
-[Quadlet]
-DefaultDependencies=false

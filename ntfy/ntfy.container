@@ -19,9 +19,7 @@ Volume=ntfy-lib.volume:/var/lib/ntfy
 
 [Service]
 Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
-
-[Quadlet]
-DefaultDependencies=false

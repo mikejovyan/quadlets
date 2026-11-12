@@ -21,9 +21,7 @@ Volume=caddy-config.volume:/config:Z
 
 [Service]
 Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
-
-[Quadlet]
-DefaultDependencies=false
