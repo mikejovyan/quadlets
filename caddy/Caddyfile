@@ -10,23 +10,21 @@
 {
 	log {
 		level WARN
-		format console
+		format console {
+			level_format lower
+		}
 	}
 	acme_dns cloudflare {$CLOUDFLARE_API_TOKEN}
+	auto_https disable_redirects
 	# 	dynamic_dns {
 	# 		provider cloudflare {$CLOUDFLARE_API_TOKEN}
 	# 		domains {
-	# 			{$MY_DOMAIN} forgejo ntfy
+	# 			{$DOMAIN} forgejo
 	# 		}
 	# 	}
 }
 
-forgejo.{$MY_DOMAIN} {
+forgejo.{$DOMAIN} {
 	import secure
-	reverse_proxy forgejo:3000
-}
-
-ntfy.{$MY_DOMAIN} {
-	import secure
-	reverse_proxy ntfy:8080
+	reverse_proxy forgejo-pod:3000
 }
