@@ -1,12 +1,13 @@
 [Unit]
-Description=Send push notifications to your phone or desktop via PUT/POST
-Documentation=https://docs.ntfy.sh/
+Description=Ntfy container
+After=network-online.target
 
 [Container]
 AutoUpdate=registry
 ContainerName=ntfy
 Exec=serve
 Image=docker.io/binwiederhier/ntfy:latest
+Label=app=ntfy
 LogDriver=journald
 RunInit=true
 Timezone=local

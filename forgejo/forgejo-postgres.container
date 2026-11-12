@@ -1,6 +1,5 @@
 [Unit]
-Description=PostgreSQL database for Forgejo
-Documentation=https://www.postgresql.org/
+Description=Forgejo PostgreSQL container
 After=forgejo-pod.service
 Requires=forgejo-pod.service
 

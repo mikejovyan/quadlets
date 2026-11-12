@@ -1,6 +1,5 @@
 [Unit]
-Description=Self-hosted git forge
-Documentation=https://forgejo.org/
+Description=Forgejo container
 After=forgejo-pod.service forgejo-postgres.service
 Requires=forgejo-pod.service forgejo-postgres.service
 

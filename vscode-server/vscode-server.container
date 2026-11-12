@@ -1,6 +1,5 @@
 [Unit]
-Description=Run VS Code on any machine anywhere and access it in the browser
-Documentation=https://code.visualstudio.com/docs/remote/vscode-server
+Description=Visual Studio Code Container
 
 [Container]
 AutoUpdate=registry
