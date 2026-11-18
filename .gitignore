@@ -1,3 +1,13 @@
+# quadlet overrides
+*.build.d/
+*.container.d/
+*.image.d/
+*.kube.d/
+*.network.d/
+*.pod.d/
+*.volume.d/
+
 # files that contain secrets
-*.env
 *.conf
+*.env
+*.yml
