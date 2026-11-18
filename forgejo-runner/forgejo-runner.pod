@@ -1,0 +1,14 @@
+[Unit]
+Description=Pod for a podman-in-podman Forgejo runner
+After=network-online.target
+
+[Pod]
+Label=app=forgejo-runner
+Network=forgejo-runner.network
+PodName=forgejo-runner-pod
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

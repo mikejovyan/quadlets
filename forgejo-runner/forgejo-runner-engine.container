@@ -1,0 +1,32 @@
+[Unit]
+Description=Podman container
+After=forgejo-runner-pod.service
+Requires=forgejo-runner-pod.service
+
+[Container]
+AddDevice=/dev/fuse
+AddDevice=/dev/net/tun
+AutoUpdate=registry
+ContainerName=forgejo-runner-engine
+Exec=podman system service --time=0 tcp://0.0.0.0:2375
+Image=forgejo-runner-engine:latest
+LogDriver=journald
+Notify=healthy
+Pod=forgejo-runner.pod
+PodmanArgs=--privileged
+Timezone=local
+
+HealthCmd=podman --url tcp://127.0.0.1:2375 info
+HealthInterval=5s
+HealthRetries=5
+HealthStartupInterval=2s
+
+Volume=forgejo-runner-engine-storage.volume:/var/lib/containers
+
+[Service]
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
+WantedBy=forgejo-runner-pod.service

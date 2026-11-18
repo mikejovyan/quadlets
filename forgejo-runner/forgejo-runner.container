@@ -1,28 +1,32 @@
 [Unit]
-Description=CI/CD runner for Forgejo
-Documentation=https://forgejo.org/docs/latest/admin/actions/
-After=forgejo-runner-docker.service forgejo.service
-BindsTo=forgejo-runner-docker.service
+Description=Forgejo runner container
+After=forgejo-runner-pod.service forgejo-runner-engine.service forgejo.service
+Requires=forgejo-runner-pod.service
+BindsTo=forgejo-runner-engine.service
 
 [Container]
 AutoUpdate=registry
 ContainerName=forgejo-runner
-Environment=DOCKER_HOST=unix:///var/run/docker-shared/docker.sock
+Environment=DOCKER_HOST=tcp://127.0.0.1:2375
+Exec=forgejo-runner --config /data/config.yml daemon
 Image=code.forgejo.org/forgejo/runner:13
 LogDriver=journald
-Network=forgejo-runner.network
+Pod=forgejo-runner.pod
 Timezone=local
 User=%U:%G
-UserNS=keep-id:uid=%U,gid=%G
+
+HealthCmd=pgrep -x forgejo-runner
+HealthInterval=60s
+HealthRetries=5
+HealthStartPeriod=30s
+
 Volume=./forgejo-runner-config.yml:/data/config.yml:ro,Z
-Volume=forgejo-runner-data:/data:Z
-Volume=forgejo-runner-docker-sock:/var/run/docker-shared
+Volume=forgejo-runner-data.volume:/data:Z
 
 [Service]
 Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
-
-[Quadlet]
-DefaultDependencies=false
+WantedBy=forgejo-runner-pod.service
