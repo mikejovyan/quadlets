@@ -1,7 +1,7 @@
 [Unit]
 Description=Caddy container
-After=network-online.target forgejo.service
-Wants=forgejo.service
+After=network-online.target forgejo-anubis.service
+Wants=forgejo-anubis.service
 
 [Container]
 AutoUpdate=registry
