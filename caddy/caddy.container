@@ -1,6 +1,7 @@
 [Unit]
 Description=Caddy container
-After=network-online.target
+After=network-online.target forgejo.service
+Wants=forgejo.service
 
 [Container]
 AutoUpdate=registry
@@ -9,6 +10,7 @@ EnvironmentFile=caddy.env
 Image=ghcr.io/serfriz/caddy-cloudflare-ddns:latest
 Label=app=caddy
 LogDriver=journald
+Notify=healthy
 Timezone=local
 
 HealthCmd=curl -fsS -m 5 -o /dev/null http://127.0.0.1:2019/config/

@@ -9,6 +9,7 @@ ContainerName=forgejo
 EnvironmentFile=forgejo.env
 Image=code.forgejo.org/forgejo/forgejo:15-rootless
 LogDriver=journald
+Notify=healthy
 Pod=forgejo.pod
 Timezone=local
 

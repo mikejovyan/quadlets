@@ -1,6 +1,7 @@
 [Unit]
 Description=Forgejo runner container
-After=forgejo-runner-pod.service forgejo-runner-engine.service forgejo.service
+After=forgejo-runner-pod.service forgejo-runner-engine.service forgejo.service caddy.service
+Wants=caddy.service
 Requires=forgejo-runner-pod.service
 BindsTo=forgejo-runner-engine.service
 
