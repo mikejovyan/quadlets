@@ -17,6 +17,8 @@ HealthCmd=curl -fsS -m 5 -o /dev/null http://127.0.0.1:3000/api/healthz
 HealthInterval=60s
 HealthRetries=5
 HealthStartPeriod=30s
+HealthStartupInterval=2s
+HealthStartupRetries=15
 
 Volume=forgejo-data.volume:/var/lib/gitea:Z
 Volume=forgejo-config.volume:/etc/gitea:Z

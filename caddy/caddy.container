@@ -17,6 +17,8 @@ HealthCmd=curl -fsS -m 5 -o /dev/null http://127.0.0.1:2019/config/
 HealthInterval=60s
 HealthRetries=5
 HealthStartPeriod=30s
+HealthStartupInterval=2s
+HealthStartupRetries=15
 
 Network=caddy.network
 Network=forgejo.network

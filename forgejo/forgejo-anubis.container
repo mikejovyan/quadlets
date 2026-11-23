@@ -20,6 +20,8 @@ HealthCmd=["anubis", "--healthcheck"]
 HealthInterval=60s
 HealthRetries=5
 HealthStartPeriod=10s
+HealthStartupInterval=2s
+HealthStartupRetries=15
 
 [Service]
 Restart=always
