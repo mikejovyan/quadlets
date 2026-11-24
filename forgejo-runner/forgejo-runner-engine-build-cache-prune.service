@@ -1,0 +1,6 @@
+[Unit]
+Description=Prune forgejo-runner-engine's build-cache volume
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/systemd/user/forgejo-runner-engine-build-cache-prune.sh

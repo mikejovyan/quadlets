@@ -1,0 +1,9 @@
+[Unit]
+Description=Monthly prune of forgejo-runner-engine's build-cache volume
+
+[Timer]
+OnCalendar=monthly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
