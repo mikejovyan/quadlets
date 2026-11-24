@@ -21,6 +21,7 @@ HealthInterval=5s
 HealthRetries=5
 HealthStartupInterval=2s
 
+Volume=./forgejo-runner-engine-registries.toml:/etc/containers/registries.conf.d/000-unqualified-search.conf:ro
 Volume=forgejo-runner-engine-storage.volume:/var/lib/containers
 
 [Service]
