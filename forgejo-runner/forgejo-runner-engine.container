@@ -14,15 +14,18 @@ LogDriver=journald
 Notify=healthy
 Pod=forgejo-runner.pod
 PodmanArgs=--privileged
+RunInit=true
 Timezone=local
+Tmpfs=/home/podman/.local/share/containers
 
 HealthCmd=podman --url tcp://127.0.0.1:2375 info
 HealthInterval=5s
 HealthRetries=5
 HealthStartupInterval=2s
 
-Volume=./forgejo-runner-engine-registries.toml:/etc/containers/registries.conf.d/000-unqualified-search.conf:ro
 Volume=forgejo-runner-engine-storage.volume:/var/lib/containers
+Volume=forgejo-runner-engine-var-tmp.volume:/var/tmp
+Volume=./forgejo-runner-engine-registries.toml:/etc/containers/registries.conf.d/000-unqualified-search.conf:ro
 
 [Service]
 Restart=always
