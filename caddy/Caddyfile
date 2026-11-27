@@ -28,7 +28,7 @@
 
 forgejo.{$DOMAIN} {
 	import secure
-	reverse_proxy forgejo-pod:8080 {
+	reverse_proxy forgejo-pod:3000 {
 		header_up X-Real-IP {remote_host}
 		header_up X-Http-Version {http.request.proto}
 	}
